@@ -26,11 +26,11 @@ body {
                 <h2 style= "margin:0 vertical-align: middle;">日記一覧</h2>
 		</div>
 	</div>
-	<img src="{{ asset('img/noDiary.png') }}" alt="" width="500" height="500" style="margin: auto;display: block;">
+	<img src="{{ asset('img/noDiary.png') }}" alt="日記がありません" width="500" height="500" style="margin: auto;display: block;">
 	<div style="text-align: center;">
 	<h4>日記が存在しません</h4>
 	<p>＋を押して日記を作成しましょう</p><br>
-	<a href="/" class="example">
+	<a href="/newPost" class="example">
 		<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16" style="color: grey;">
 		<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
 		</svg>
