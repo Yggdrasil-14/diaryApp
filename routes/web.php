@@ -17,3 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('diaryListDisplay','App\Http\Controllers\DiaryListController@diaryListDisplay');
+Route::get('newPostDisplay','App\Http\Controllers\NewPostController@newPostDisplay');
