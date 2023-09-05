@@ -15,9 +15,34 @@ body {
 p {
 	font-size: larger
 }
+hr.style14 {
+ border: 0;
+ height: 1px;
+ background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+ background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+ background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+ background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+}
+hr.style17 {
+border-top: 1px solid #8c8b8b;
+text-align: center;
+}
+hr.style17:after {
+content: '§';
+display: inline-block;
+position: relative;
+top: -14px;
+padding: 0 10px;
+background: antiquewhite;
+color: #8c8b8b;
+font-size: 18px;
+-webkit-transform: rotate(60deg);
+-moz-transform: rotate(60deg);
+transform: rotate(60deg);
+}
 </style>
 <body>
-	<input id="diarysCnt" type="hidden" value=1></input>
+	<input id="diarysCnt" type="hidden" value= {{ $diarysCnt }} ></input>
 	<header data-role="header"></header>
 	<br>
 	<div class="container">
@@ -30,6 +55,8 @@ p {
             <h2 style= "margin:0 vertical-align: middle;">日記一覧</h2>
 		</div>
 	</div>
+
+	<!-- 日記未存在表示 -->
 	<div id="noDiary">
 		<br>
 		<img src="{{ asset('img/noDiary.png') }}" alt="日記がありません" width="500" height="500" style="margin: auto;display: block;">
@@ -44,62 +71,22 @@ p {
 		</div>
 	</div>
 
-	<div id="diarys">
-		<div class="container">
-			<hr class="style14">
-			<h4 style="display:inline; margin-right:3%">{{ substr($value['date'],5,5) }}</h4><h5 style="display:inline;vertical-align: bottom;">{{ substr($value['date'],0,4) }}</h5>
-			</div>
-			<br>
-			<div class="container">
-			<p>{{ $value['content'] }}</p>
-			<br>
-			<hr class="style17">
-		</div>
-
-		<div class="container">
-			<h4 style="display:inline; margin-right:3%">{{ substr($value['date'],5,5) }}</h4><h5 style="display:inline;vertical-align: bottom;">{{ substr($value['date'],0,4) }}</h5>
-			</div>
-			<br>
-			<div class="container">
-			<p>{{ $value['content'] }}</p>
-			<br>
-			<hr class="style17">
-		</div>
-
-		<div class="container">
-			<hr class="style14">
-			<h4 style="display:inline; margin-right:3%">{{ substr($value['date'],5,5) }}</h4><h5 style="display:inline;vertical-align: bottom;">{{ substr($value['date'],0,4) }}</h5>
-			</div>
-			<br>
-			<div class="container">
-			<p>{{ $value['content'] }}</p>
-			<br>
-			<hr class="style17">
-		</div>
-
-		<div class="container">
-			<hr class="style14">
-			<h4 style="display:inline; margin-right:3%">{{ substr($value['date'],5,5) }}</h4><h5 style="display:inline;vertical-align: bottom;">{{ substr($value['date'],0,4) }}</h5>
-			</div>
-			<br>
-			<div class="container">
-			<p>{{ $value['content'] }}</p>
-			<br>
-			<hr class="style17">
-		</div>
-
-		<div class="container">
-			<hr class="style14">
-			<h4 style="display:inline; margin-right:3%">{{ substr($value['date'],5,5) }}</h4><h5 style="display:inline;vertical-align: bottom;">{{ substr($value['date'],0,4) }}</h5>
-			</div>
-			<br>
-			<div class="container">
-			<p>{{ $value['content'] }}</p>
-			<br>
-			<hr class="style17">
+	<!-- 日記表示 -->
+	<div class="container">
+		<div id="diarys">
+			<hr class="style17"><br>
+			@foreach($data as $diaryData)
+				<div class="container">
+					<h4 style="display:inline; margin-right:3%">{{ substr($diaryData->date,5,5) }}</h4><h5 style="display:inline;vertical-align: bottom;">{{ substr($diaryData->date,0,4) }}</h5>
+				</div>
+				<br>
+				<div class="container">
+					<p>{{ $diaryData->content }}</p>
+				</div>
+				<br><hr class="style17">
+			@endforeach
 		</div>
 	</div>
-
 
 </body>
 <script>
