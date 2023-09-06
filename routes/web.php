@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,3 +19,4 @@ Route::get('/', function () {
 });
 Route::get('diaryListDisplay','App\Http\Controllers\DiaryListController@diaryListDisplay');
 Route::get('newPostDisplay','App\Http\Controllers\NewPostController@newPostDisplay');
+Route::post('newPost','App\Http\Controllers\NewPostController@register');
