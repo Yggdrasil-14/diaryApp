@@ -53,6 +53,11 @@ transform: rotate(60deg);
                 </svg>
             </div>
             <h2 style= "margin:0 vertical-align: middle;">日記一覧</h2>
+			<a href="/newPostDisplay" id="toNewPostDisplay" class="example" style="margin-left: auto;">
+				<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16" style="color: grey;">
+				<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+				</svg>
+			</a>
 		</div>
 	</div>
 
@@ -74,16 +79,16 @@ transform: rotate(60deg);
 	<!-- 日記表示 -->
 	<div class="container">
 		<div id="diarys">
-			<hr class="style17"><br>
+			<hr class="style17">
 			@foreach($data as $diaryData)
+				<br>
 				<div class="container">
 					<h4 style="display:inline; margin-right:3%">{{ substr($diaryData->date,5,5) }}</h4><h5 style="display:inline;vertical-align: bottom;">{{ substr($diaryData->date,0,4) }}</h5>
 				</div>
-				<br>
 				<div class="container">
 					<p>{{ $diaryData->content }}</p>
-				</div>
-				<br><hr class="style17">
+				</div><br>
+				<hr class="style17">
 			@endforeach
 		</div>
 	</div>
@@ -96,6 +101,7 @@ transform: rotate(60deg);
 	}else{
 		document.getElementById("noDiary").style.display = "block";
 		document.getElementById("diarys").style.display = "none";
+		document.getElementById("toNewPostDisplay").style.display = "none";
 	};
 </script>
 </html>

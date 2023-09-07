@@ -23,7 +23,7 @@ class PostRequest extends FormRequest
     {
         return [
             'date' => ['required', 'max:20'],
-            'content' => ['required', 'max:20'],
+            'content' => ['required', 'max:4000'],
         ];
     }
 }

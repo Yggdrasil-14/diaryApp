@@ -9,14 +9,10 @@ use App\Repositories\NewPostRepository;
 class NewPostController extends Controller
 {
     public function newPostDisplay(){
-        // 配列の初期化
-        $data = array();
+        
+        $today = $this->getDateTime();
 
-        // 現在日時
-        date_default_timezone_set('Asia/Tokyo');
-        $data['today'] = date('Y年m月d日 H:i:s');
-
-        return view('newPost');
+        return view('newPost',compact('today'));
     }
 
     public function register(PostRequest $request){
@@ -25,6 +21,21 @@ class NewPostController extends Controller
 
         $repo->insertDiary($request);
 
-        return view('newPost');
+        $today = $this->getDateTime();
+
+        return view('newPost',compact('today'));
     }
+
+    public static function getDateTime(){
+        // 現在日時
+        date_default_timezone_set('Asia/Tokyo');
+        $today = array(
+            'dispToday' => date('m/d Y'),
+            'dataToday' => date('Y-m-d H:i:s')
+        );
+
+        return $today;
+    }
+
+    
 }

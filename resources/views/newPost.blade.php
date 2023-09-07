@@ -30,12 +30,8 @@ display: inline;
 height: 500px;
 vertical-align: text-top;
 }
-</style>
-</head>
 
-<body>
-	<style>
-	.card-header:first-child {
+.card-header:first-child {
 	border-radius: 10px 10px 0 0;
 	background-color: goldenrod;
 	padding: 10px 10px 4px 20px;
@@ -48,8 +44,57 @@ vertical-align: text-top;
 		display: flex;
 		justify-content: space-around;
 	}
-	</style>
-	
+
+button{
+    appearance: none;
+    margin: 0;
+    padding: 0;
+    background: none;
+    border: none;
+    border-radius: 0;
+    outline: none;
+}
+button {
+  position: relative;
+  display: block;
+  padding: 1em 2em 1em 1em;
+  width: 175px;
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+    line-height: 1;
+  background: #e5a05b;
+  background: linear-gradient(to right, #e5a05b, #e5a05b);
+  text-indent: 0.1em;
+  letter-spacing: 0.1em;
+  border-radius: 1.5em;
+
+  
+}
+
+button:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 1.5em;
+  margin: auto;
+  display: inline-block;
+  width: 0.5em;
+  height: 0.5em;
+  border-right: 1px solid #fff;
+  border-top: 1px solid #fff;
+  transform: rotate(45deg);
+  transition: right 0.5s;
+}
+
+button:hover:after{
+  right: 1em;
+}
+</style>
+</head>
+
+<body>
 	<div class="container" style="margin-top:5rem">
 		<div class="item">
 			<a href="/diaryListDisplay" class="example">
@@ -60,12 +105,13 @@ vertical-align: text-top;
 		</div>
 	</div>
 	<br>
-	<div class="container">
-		<h4 style="display:inline; margin-right:3%">9/4</h4><h5 style="display:inline;vertical-align: bottom;">2023</h5>
-	</div>
-	<br>
 	<form action="{{ url('/newPost') }}" method="post">
 	@csrf
+		<div class="container">
+			<h4 style="display:inline; margin-right:3%">{{ $today['dispToday'] }}</h4>
+			<input type="hidden" name="date" value="{{ $today['dataToday'] }}">
+		</div>
+		<br>
 		<div class="container" style="width:50%">
 			<div>
 				<div class="card" style="width:100%; border-radius:10px 10px 10px 10px">
@@ -88,13 +134,12 @@ vertical-align: text-top;
 			</div>
 		</div>
 		<div class="container" style="margin-top:2%">
-			<input type="text" name="date" required="required">
 			<textarea name="content" id="contents" required="required" th:text="${contents}" maxlength='30000'cols="60"
 			placeholder="今日はどんなことがありましたか？"
 			style="width: 100%; height: 200px; border: 1px solid ;border-radius:10px 10px 10px 10px;border-color:grey;"></textarea>
 		</div>
 		<div class="container" style="margin-top:2%">
-			<input type="submit" value="保存">
+			<button type="submit">記録する</button>
 		</div>
 	</form>
 </body>
