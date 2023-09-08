@@ -112,8 +112,8 @@ button:hover:after{
 			<input type="hidden" name="date" value="{{ $today['dataToday'] }}">
 		</div>
 		<br>
-		<div class="container" style="width:50%">
-			<div>
+		<div class="container">
+			<div style="width: 70%;margin-right: auto;">
 				<div class="card" style="width:100%; border-radius:10px 10px 10px 10px">
 					<div class="card-header">
 					画像追加
@@ -125,7 +125,7 @@ button:hover:after{
 							<path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54A.505.505 0 0 1 1 12.5v-9a.5.5 0 0 1 .5-.5h13z"/>
 							</svg>
 							<div style="display: inline-block">
-								<input type="file" name="image">
+								<input type="file" name="image" accept=".jpg,.png">
 							</div>
 							<footer class="blockquote-footer">今日のハイライトを一緒に記録しましょう</footer>
 						</blockquote>
@@ -138,8 +138,8 @@ button:hover:after{
 			placeholder="今日はどんなことがありましたか？"
 			style="width: 100%; height: 200px; border: 1px solid ;border-radius:10px 10px 10px 10px;border-color:grey;"></textarea>
 		</div>
-		<div class="container" style="margin-top:2%">
-			<button type="submit">記録する</button>
+		<div class="container" style="margin-top:1%">
+			<button type="submit"><img src="{{ asset('img/postIcon.png') }}" alt="ペン" width="30" height="30" style="margin-right: 10px;">記録する</button>
 		</div>
 	</form>
 </body>
