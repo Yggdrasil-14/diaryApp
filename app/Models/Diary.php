@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class Diary extends Model
 {
     use HasFactory;
-    protected $fillable = ['date', 'content', 'img_id','delete_flg'];
+    protected $fillable = ['date', 'content', 'img_path','delete_flg'];
     protected $table = 'diarys';//対象とするテーブル名の指定
 
     //テーブル内データの件数を返す

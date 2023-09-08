@@ -105,7 +105,7 @@ button:hover:after{
 		</div>
 	</div>
 	<br>
-	<form action="{{ url('/newPost') }}" method="post">
+	<form action="{{ url('/newPost') }}" method="post" enctype="multipart/form-data">
 	@csrf
 		<div class="container">
 			<h4 style="display:inline; margin-right:3%">{{ $today['dispToday'] }}</h4>

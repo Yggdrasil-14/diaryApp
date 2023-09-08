@@ -15,8 +15,8 @@ return new class extends Migration
             $table->increments('id');
             $table->datetime('date');
             $table->string('content',4000);
-            $table->string('img_id',2000);
-            $table->string('delete_flg',1);
+            $table->string('img_path',2000)->nullable();
+            $table->integer('delete_flg')->default(0);
             $table->timestamps();
         });
     }

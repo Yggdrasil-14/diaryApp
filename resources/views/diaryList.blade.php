@@ -111,13 +111,10 @@ hr.style17:after {
 			</a>
 		</div>
 	</div>
-
+	{{ $data->links('pagination::default') }}
 	<!-- 日記表示 -->
 	<div class="container">
 		<div id="diarys">
-			<div>
-				{{ $data->links('pagination::default') }}
-			</div>
 				<hr class="style17">
 			@foreach($data as $diaryData)
 				<br>
@@ -125,13 +122,15 @@ hr.style17:after {
 					<h4 style="display:inline; margin-right:3%">{{ substr($diaryData->date,5,5) }}</h4><h5 style="display:inline;vertical-align: bottom;">{{ substr($diaryData->date,0,4) }}</h5>
 				</div>
 				<div class="container">
+					@if (!is_null($diaryData->img_path))
+						<img src="{{ asset($diaryData->img_path) }}" alt="test" width="400" height="300">
+					@endif
 					<p>{{ $diaryData->content }}</p>
 				</div><br>
 				<hr class="style17">
 			@endforeach
 		</div>
 	</div>
-
 </body>
 <script>
 	if(document.getElementById("diarysCnt").value >= 1){

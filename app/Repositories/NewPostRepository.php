@@ -15,7 +15,7 @@ class NewPostRepository
         $diary->create([
             'date' => $request->date,
             'content' => $request->content,
-            'img_id' => 'test',
+            'img_path' => $request->img_path,
             'delete_flg' => '0',
         ]);
     }
