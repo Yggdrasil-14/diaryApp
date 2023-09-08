@@ -20,7 +20,7 @@ class Diary extends Model
     
     //テーブル内のすべてのデータを取得して返す
     public function getData(){
-        $data = DB::table($this->table)->get();
+        $data = DB::table($this->table)->orderBy('date')->paginate(5);
         return $data;
     }
 

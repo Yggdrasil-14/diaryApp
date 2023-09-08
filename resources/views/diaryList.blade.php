@@ -16,29 +16,65 @@ p {
 	font-size: larger
 }
 hr.style14 {
- border: 0;
- height: 1px;
- background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
- background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
- background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
- background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+	border: 0;
+	height: 1px;
+	background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+	background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+	background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+	background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
 }
 hr.style17 {
-border-top: 1px solid #8c8b8b;
-text-align: center;
+	border-top: 1px solid #8c8b8b;
+	text-align: center;
 }
 hr.style17:after {
-content: '§';
-display: inline-block;
-position: relative;
-top: -14px;
-padding: 0 10px;
-background: antiquewhite;
-color: #8c8b8b;
-font-size: 18px;
--webkit-transform: rotate(60deg);
--moz-transform: rotate(60deg);
-transform: rotate(60deg);
+	content: '§';
+	display: inline-block;
+	position: relative;
+	top: -14px;
+	padding: 0 10px;
+	background: antiquewhite;
+	color: #8c8b8b;
+	font-size: 18px;
+	-webkit-transform: rotate(60deg);
+	-moz-transform: rotate(60deg);
+	transform: rotate(60deg);
+}
+.paginationWrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 38px;
+    margin-bottom: 40px;
+}
+
+.paginationWrap ul.pagination {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+
+.paginationWrap ul.pagination li {
+  display: inline;
+  margin-right: 4px;
+}
+
+.paginationWrap ul.pagination li a {
+    color: #2f3859;
+    padding: 8px 14px;
+    text-decoration: none;
+}
+
+.paginationWrap ul.pagination li a.active {
+    background-color: #f2a349;
+    color: white;
+    border-radius: 40px;
+    width: 38px;
+    height: 38px;
+}
+
+.paginationWrap ul.pagination li a:hover:not(.active) {
+    background-color: #edae66;
+    border-radius: 40px;
 }
 </style>
 <body>
@@ -79,7 +115,10 @@ transform: rotate(60deg);
 	<!-- 日記表示 -->
 	<div class="container">
 		<div id="diarys">
-			<hr class="style17">
+			<div>
+				{{ $data->links('pagination::default') }}
+			</div>
+				<hr class="style17">
 			@foreach($data as $diaryData)
 				<br>
 				<div class="container">
