@@ -14,13 +14,13 @@ class Diary extends Model
 
     //テーブル内データの件数を返す
     public function getCnt(){
-        $cnt = DB::table($this->table)->count();
+        $cnt = DB::table($this->table)->where('delete_flg', '=', 0)->count();
         return $cnt;
     }
     
-    //テーブル内のすべてのデータを取得して返す
+    //テーブル内の削除フラグが立っていないすべてのデータを取得して返す
     public function getData(){
-        $data = DB::table($this->table)->orderBy('date')->paginate(5);
+        $data = DB::table($this->table)->where('delete_flg', '=', 0)->orderBy('date')->paginate(5);
         return $data;
     }
 

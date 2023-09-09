@@ -16,4 +16,13 @@ class DiaryListController extends Controller
 
         return view('diaryList',compact('diarysCnt','data'));
     }
+
+    public function delete($id){
+
+        $object = new Diary();
+        $object->where('id', '=', $id)->update(['delete_flg' => 1,]);
+        //$object->where('id', '=', $id)->delete();
+
+        return redirect('/diaryListDisplay');
+    }
 }

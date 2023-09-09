@@ -20,3 +20,4 @@ Route::get('/', function () {
 Route::get('diaryListDisplay','App\Http\Controllers\DiaryListController@diaryListDisplay');
 Route::get('newPostDisplay','App\Http\Controllers\NewPostController@newPostDisplay');
 Route::post('newPost','App\Http\Controllers\NewPostController@register');
+Route::post('/delete{id}', 'App\Http\Controllers\DiaryListController@delete')->name('diary.delete');
