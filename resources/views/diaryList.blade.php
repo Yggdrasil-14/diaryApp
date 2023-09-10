@@ -8,7 +8,7 @@
 		crossorigin="anonymous">
 	<link rel="stylesheet" href="{{ asset('/css/list.css')  }}" >
 	<script src="{{ asset('/js/diaryapp.js') }}"></script>
-	<title>日記一覧</title>
+	<title>一覧</title>
 </head>
 <body>
 	<input id="diarysCnt" type="hidden" value= {{ $diarysCnt }} ></input>
@@ -26,7 +26,7 @@
 				<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
 				</svg>
 			</a>
-			<a href="/newPostDisplay" id="toTrash" style="margin-left: 2%;">
+			<a href="/trashListDisplay" id="toTrash" style="margin-left: 2%;">
 				<img src="{{ asset('img/trash.png') }}" alt="ゴミ箱" width="83" height="83">
 			</a>
 		</div>
@@ -44,7 +44,7 @@
 				<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
 				</svg>
 			</a>
-			<a href="/newPostDisplay" id="toTrash" style="margin-left: 2%;">
+			<a href="/trashListDisplay" id="toTrash" style="margin-left: 2%;">
 				<img src="{{ asset('img/trash.png') }}" alt="ゴミ箱" width="100" height="100">
 			</a>
 		</div>
@@ -68,7 +68,7 @@
 							</svg>
 						</button>
 					</form>
-					<form action="{{ route('diary.delete', ['id'=>$diaryData->id]) }}" method="POST" style="display: inline;" onSubmit="return check('削除')">
+					<form action="{{ route('diary.delete', ['id'=>$diaryData->id]) }}" method="GET" style="display: inline;" onSubmit="return check('削除')">
 						@csrf
 						<button type="submit" style="display: contents;">
 							<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16" style="margin-left:2%">

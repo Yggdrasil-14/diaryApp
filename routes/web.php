@@ -20,6 +20,9 @@ Route::get('/', function () {
 Route::get('diaryListDisplay','App\Http\Controllers\DiaryListController@diaryListDisplay');
 Route::get('newPostDisplay','App\Http\Controllers\NewPostController@newPostDisplay');
 Route::post('newPost','App\Http\Controllers\NewPostController@register');
-Route::post('/delete{id}', 'App\Http\Controllers\DiaryListController@delete')->name('diary.delete');
+Route::get('/delete/{id}', 'App\Http\Controllers\DiaryListController@delete')->name('diary.delete');
 Route::get('/edit/{id}', 'App\Http\Controllers\DiaryListController@edit')->name('diary.edit');
 Route::post('/update/{id}', 'App\Http\Controllers\DiaryListController@update')->name('diary.update');
+Route::get('trashListDisplay','App\Http\Controllers\TrashListController@trashListDisplay');
+Route::get('/destroy/{id}', 'App\Http\Controllers\TrashListController@destroy')->name('trash.destroy');
+Route::get('/restoration/{id}', 'App\Http\Controllers\TrashListController@restoration')->name('trash.restoration');

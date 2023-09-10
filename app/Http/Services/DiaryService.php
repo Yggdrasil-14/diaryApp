@@ -18,14 +18,34 @@ class DiaryService
         return Diary::where('delete_flg', '=', 0)->orderBy('date')->paginate(5);
     }
 
-    //IDを受けて削除を実行
+    //削除データの件数を返す
+    public function getTrashCnt(){
+        return Diary::where('delete_flg', '=', 1)->count();
+    }
+    
+    //テーブル内の削除フラグが立っているすべてのデータを取得して返す
+    public function getTrashDiaries(){
+        return Diary::where('delete_flg', '=', 1)->orderBy('date')->paginate(5);
+    }
+
+    //IDを受けて削除フラグ立てを実行
     public function delete($id){
+        Diary::where('id', '=', $id)->update(['delete_flg' => 1,]);
+    }
+
+    //IDを受けて日記と画像の削除を実行
+    public function destroy($id){
         $diary = Diary::find($id);
         if (!is_null($diary->img_path)) {
             $deleteFilePath = substr($diary->img_path,8);
             Storage::disk('public')->delete($deleteFilePath);
         }
-        Diary::where('id', '=', $id)->update(['delete_flg' => 1,]);
+        Diary::where('id', '=', $id)->delete();
+    }
+
+    //IDを受けて削除フラグ折りを実行
+    public function restoration($id){
+        Diary::where('id', '=', $id)->update(['delete_flg' => 0,]);
     }
 
     public function register(PostRequest $request){
