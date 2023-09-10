@@ -1,99 +1,15 @@
-<!doctype html>
-<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="ja">
 <head>
-<meta charset="utf-8">
-<meta name="viewport"
-content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-<!-- Bootstrap CSS -->
-<link rel="stylesheet"
-href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-crossorigin="anonymous">
-<title>入力画面</title>
-<style>
-p {
-margin: 0;
-}
-
-body {
-background-color: antiquewhite;
-}
-
-.wrap {
-display: inline-block;
-margin-right: 10px;
-}
-
-.contents>.form-control {
-display: inline;
-height: 500px;
-vertical-align: text-top;
-}
-
-.card-header:first-child {
-	border-radius: 10px 10px 0 0;
-	background-color: goldenrod;
-	padding: 10px 10px 4px 20px;
-	}
-	.card-body {
-	border-radius: 0 0 10px 10px;
-	background-color: wheat;
-	}
-	.test-container {
-		display: flex;
-		justify-content: space-around;
-	}
-
-button{
-    appearance: none;
-    margin: 0;
-    padding: 0;
-    background: none;
-    border: none;
-    border-radius: 0;
-    outline: none;
-}
-button {
-  position: relative;
-  display: block;
-  padding: 1em 2em 1em 1em;
-  width: 175px;
-  font-size: 14px;
-  color: #fff;
-  text-align: center;
-    line-height: 1;
-  background: #e5a05b;
-  background: linear-gradient(to right, #e5a05b, #e5a05b);
-  text-indent: 0.1em;
-  letter-spacing: 0.1em;
-  border-radius: 1.5em;
-
-  
-}
-
-button:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 1.5em;
-  margin: auto;
-  display: inline-block;
-  width: 0.5em;
-  height: 0.5em;
-  border-right: 1px solid #fff;
-  border-top: 1px solid #fff;
-  transform: rotate(45deg);
-  transition: right 0.5s;
-}
-
-button:hover:after{
-  right: 1em;
-}
-</style>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+		crossorigin="anonymous">
+	<link rel="stylesheet" href="{{ asset('/css/post.css')  }}" >
+	<script src="{{ asset('/js/diaryapp.js') }}"></script>
+	<title>入力画面</title>
 </head>
-
 <body>
 	<div class="container" style="margin-top:5rem">
 		<div class="item">
@@ -104,11 +20,22 @@ button:hover:after{
 			</a>
 		</div>
 	</div>
+	<div class="container">
+		<div class="col" style= "display:flex;margin-top: 2%;">
+            <div>
+				<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16" style="margin-left:5%">
+					<path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+					<path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+				</svg>
+            </div>
+            <h2 style= "margin-left: 1%;">日記編集</h2>
+		</div>
+	</div>
 	<br>
-	<form action="{{ route('diary.update', ['id'=>$data->id]) }}" method="post" enctype="multipart/form-data">
+	<form action="{{ route('diary.update', ['id'=>$data->id]) }}" method="post" enctype="multipart/form-data" onSubmit="return check('更新')">
 	@csrf
 		<div class="container">
-			<input type="datetime-local" name="date" value="{{ $data->date }}">
+			<input type="datetime-local" name="date" required="required" value="{{ $data->date }}" style="color: dimgrey;font-size: x-large;border-radius: 10px;border-color: coral;">
 			<h4 style="display:inline; margin-right:3%"></h4>
 		</div>
 		<br>
