@@ -8,7 +8,7 @@
 		crossorigin="anonymous">
 	<link rel="stylesheet" href="{{ asset('/css/post.css')  }}" >
 	<script src="{{ asset('/js/diaryapp.js') }}"></script>
-	<title>編集画面</title>
+	<title>新規投稿</title>
 </head>
 <body>
 	<div class="container" style="margin-top:5rem">
