@@ -21,3 +21,5 @@ Route::get('diaryListDisplay','App\Http\Controllers\DiaryListController@diaryLis
 Route::get('newPostDisplay','App\Http\Controllers\NewPostController@newPostDisplay');
 Route::post('newPost','App\Http\Controllers\NewPostController@register');
 Route::post('/delete{id}', 'App\Http\Controllers\DiaryListController@delete')->name('diary.delete');
+Route::get('/edit/{id}', 'App\Http\Controllers\DiaryListController@edit')->name('diary.edit');
+Route::post('/update/{id}', 'App\Http\Controllers\DiaryListController@update')->name('diary.update');

@@ -121,7 +121,7 @@ hr.style17:after {
 				<div class="container">
 					<h4 style="display:inline; margin-right:3%;vertical-align: bottom;">{{ substr($diaryData->date,5,5) }}</h4>
 					<h5 style="display:inline;vertical-align: bottom;">{{ substr($diaryData->date,0,4) }}</h5>
-					<form action="{{ route('diary.edit', ['id'=>$diaryData->id]) }}" method="POST" style="display: inline;">
+					<form action="{{ route('diary.edit', ['id'=>$diaryData->id]) }}" method="GET" style="display: inline;">
 						@csrf
 						<button type="submit" style="display: contents;">
 							<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16" style="margin-left:5%">
