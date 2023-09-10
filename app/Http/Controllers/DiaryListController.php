@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Diary;
 use App\Http\Requests\PostRequest;
 use App\Http\Services\DiaryService;
-use Illuminate\Support\Facades\Storage;
 
 class DiaryListController extends Controller
 {
