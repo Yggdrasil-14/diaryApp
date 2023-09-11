@@ -8,12 +8,12 @@
 		crossorigin="anonymous">
 	<link rel="stylesheet" href="{{ asset('/css/post.css')  }}" >
 	<script src="{{ asset('/js/diaryapp.js') }}"></script>
-	<title>新規投稿</title>
+	<title>編集</title>
 </head>
 <body>
 	<div class="container" style="margin-top:5rem">
 		<div class="item">
-			<a href="/diaryListDisplay" class="example">
+			<a href="/diary/list" class="example">
 				<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-caret-left" viewBox="0 0 16 16" style="color:gray">
 				<path d="M10 12.796V3.204L4.519 8 10 12.796zm-.659.753-5.48-4.796a1 1 0 0 1 0-1.506l5.48-4.796A1 1 0 0 1 11 3.204v9.592a1 1 0 0 1-1.659.753z"/>
 				</svg>
@@ -28,15 +28,15 @@
 					<path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
 				</svg>
             </div>
-            <h2 style= "margin-left: 1%;">新規投稿</h2>
+            <h2 style= "margin-left: 1%;">日記編集</h2>
 		</div>
 	</div>
 	<br>
-	<form action="{{ url('/newPost') }}" method="post" enctype="multipart/form-data" onSubmit="return check('登録')">
+	<form action="{{ route('diary.update', ['id'=>$data->id]) }}" method="post" enctype="multipart/form-data" onSubmit="return check('更新')">
 	@csrf
 		<div class="container">
-			<h4 style="display:inline; margin-right:3%">{{ $today['dispToday'] }}</h4>
-			<input type="hidden" name="date" value="{{ $today['dataToday'] }}">
+			<input type="datetime-local" name="date" required="required" value="{{ $data->date }}" style="color: dimgrey;font-size: x-large;border-radius: 10px;border-color: coral;">
+			<h4 style="display:inline; margin-right:3%"></h4>
 		</div>
 		<br>
 		<div class="container">
@@ -54,7 +54,12 @@
 							<div style="display: inline-block">
 								<input type="file" name="image" accept=".jpg,.png">
 							</div>
-							<footer class="blockquote-footer">今日のハイライトを一緒に記録しましょう</footer>
+							@if (!is_null($data->img_path))
+								<h6 style="margin-top:1%;color:grey">画像を変更する場合はアップロードしてください</h6>
+								<h6 style="margin-top:1%;color:grey">現在記録されている画像</h6>
+								<img src="{{ asset($data->img_path) }}" alt="test" width="200" height="150">
+								<input type="hidden" name="currentImage" value="{{ $data->img_path }}">
+							@endif
 						</blockquote>
 					</div>
 				</div>
@@ -63,7 +68,7 @@
 		<div class="container" style="margin-top:2%">
 			<textarea name="content" id="contents" required="required" th:text="${contents}" maxlength='30000'cols="60"
 			placeholder="今日はどんなことがありましたか？"
-			style="width: 100%; height: 200px; border: 1px solid ;border-radius:10px 10px 10px 10px;border-color:grey;"></textarea>
+			style="width: 100%; height: 200px; border: 1px solid ;border-radius:10px 10px 10px 10px;border-color:grey;">{{ $data->content }}</textarea>
 		</div>
 		<div class="container" style="margin-top:1%">
 			<button type="submit"><img src="{{ asset('img/postIcon.png') }}" alt="ペン" width="30" height="30" style="margin-right: 10px;">記録する</button>

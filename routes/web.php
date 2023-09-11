@@ -14,15 +14,13 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('diaryListDisplay','App\Http\Controllers\DiaryListController@diaryListDisplay');
-Route::get('newPostDisplay','App\Http\Controllers\NewPostController@newPostDisplay');
-Route::post('newPost','App\Http\Controllers\NewPostController@register');
-Route::get('/delete/{id}', 'App\Http\Controllers\DiaryListController@delete')->name('diary.delete');
-Route::get('/edit/{id}', 'App\Http\Controllers\DiaryListController@edit')->name('diary.edit');
-Route::post('/update/{id}', 'App\Http\Controllers\DiaryListController@update')->name('diary.update');
-Route::get('trashListDisplay','App\Http\Controllers\TrashListController@trashListDisplay');
-Route::get('/destroy/{id}', 'App\Http\Controllers\TrashListController@destroy')->name('trash.destroy');
-Route::get('/restoration/{id}', 'App\Http\Controllers\TrashListController@restoration')->name('trash.restoration');
+Route::get('/', function () {return redirect('/diary/list');});
+Route::get('/diary/list','App\Http\Controllers\diary\ListController@list');
+Route::get('/diary/newPost','App\Http\Controllers\diary\NewPostController@newPost');
+Route::post('/diary/newPost','App\Http\Controllers\diary\NewPostController@register');
+Route::get('/diary/delete/{id}', 'App\Http\Controllers\diary\ListController@delete')->name('diary.delete');
+Route::get('/diary/edit/{id}', 'App\Http\Controllers\diary\ListController@edit')->name('diary.edit');
+Route::post('/diary/update/{id}', 'App\Http\Controllers\diary\ListController@update')->name('diary.update');
+Route::get('/diary/trash','App\Http\Controllers\diary\TrashController@trash');
+Route::get('/diary/destroy/{id}', 'App\Http\Controllers\diary\TrashController@destroy')->name('trash.destroy');
+Route::get('/diary/restoration/{id}', 'App\Http\Controllers\diary\TrashController@restoration')->name('trash.restoration');

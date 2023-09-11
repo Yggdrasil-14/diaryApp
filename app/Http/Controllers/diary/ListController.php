@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\diary;
 
 use App\Http\Requests\PostRequest;
 use App\Http\Services\DiaryService;
 
-class DiaryListController extends Controller
+class ListController extends Controller
 {
     
     private $diaryService;
@@ -16,32 +16,32 @@ class DiaryListController extends Controller
     }
     
     
-    public function diaryListDisplay(){
+    public function list(){
 
         $diarysCnt = $this->diaryService->getCnt();
         $data = $this->diaryService->getDiaries();
 
-        return view('diaryList',compact('diarysCnt','data'));
+        return view('diary/list',compact('diarysCnt','data'));
     }
 
     public function delete($id){
 
         $this->diaryService->delete($id);
 
-        return redirect('/diaryListDisplay');
+        return redirect('/diary/list');
     }
 
     public function edit($id){
 
         $data = $this->diaryService->edit($id);
         
-        return view('editPost',compact('data'));
+        return view('diary/editPost',compact('data'));
     }
 
     public function update(PostRequest $request,$id){
         
         $this->diaryService->update($request,$id);
 
-        return redirect('/diaryListDisplay');
+        return redirect('/diary/list');
     }
 }
