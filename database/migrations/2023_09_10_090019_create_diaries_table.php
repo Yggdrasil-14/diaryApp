@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('diaries', function (Blueprint $table) {
             $table->increments('id');
             $table->datetime('date');
-            $table->string('content',4000);
-            $table->string('img_path',2000)->nullable();
+            $table->string('content',1000);
+            $table->string('img_path',1000)->nullable();
             $table->integer('delete_flg')->default(0);
             $table->timestamps();
         });

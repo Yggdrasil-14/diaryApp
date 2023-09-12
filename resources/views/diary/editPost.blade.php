@@ -66,7 +66,7 @@
 			</div>
 		</div>
 		<div class="container" style="margin-top:2%">
-			<textarea name="content" id="contents" required="required" th:text="${contents}" maxlength='30000'cols="60"
+			<textarea name="content" id="contents" required="required" th:text="${contents}" maxlength='1000'cols="60"
 			placeholder="今日はどんなことがありましたか？"
 			style="width: 100%; height: 200px; border: 1px solid ;border-radius:10px 10px 10px 10px;border-color:grey;">{{ $data->content }}</textarea>
 		</div>
