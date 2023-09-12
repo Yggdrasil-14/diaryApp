@@ -21,7 +21,31 @@
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+## 機能
+
+一覧画面
+　登録されている日記を5件ごとの日付で順表示します。
+　日記ごとに編集画面への遷移が可能です。
+　日記ごとに削除が可能です。
+　削除した日記はゴミ箱に移動されます。
+　削除された日記は表示されません。
+
+新規登録画面
+　日記の新規登録を行います。
+　日記には画像を1枚アップロードすることが可能です。
+　日記内容には1000文字までの入力が可能です。
+
+編集画面
+　日記の編集を行います。
+　日記の日付、日記内容、画像の更新が可能です。
+
+ゴミ箱画面
+　削除された日記を5件ごとの日付で順表示します。
+　日記ごとに復元が可能です。
+　復元を行うと削除前の状態に戻すことができます。
+　日記ごとに削除が可能です。
+　削除した日記はアプリケーションから完全に削除されます。
+
 
 Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
